@@ -1,0 +1,43 @@
+swagger: "2.0"
+info:
+  description: "This is API Documentation for Tresor App"
+  version: "1.0.0"
+  title: "Tresor API"
+  contact:
+    email: "apiteam@swagger.io"
+host: "tresor.website"
+tags:
+- name: "user"
+  description: "Everything about User"
+schemes:
+- "https"
+paths:
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "To create user"
+      operationId: "createUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          type: "object"
+          properties:
+            email:
+              type: "string"
+            password:
+              type: "string"
+      responses:
+        204:
+          description: "user created"
+  /login:
+    post:
+      tags:
+      - "login"
+      summary: "Login user"
