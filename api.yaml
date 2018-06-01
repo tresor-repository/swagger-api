@@ -52,6 +52,22 @@ paths:
               message:
                 type: string
   /spendings/:
+    post:
+      tags:
+        - spendings
+      summary: create spending
+      operationId: createSpending
+      parameters:
+        - in: body
+          name: spending
+          required: true
+          schema:
+            $ref: "#/definitions/Spending"
+      responses:
+        200:
+          description: Successfully create spending
+          schema:
+            $ref: "#/definitions/Spending"
     get:
       tags:
         - spendings
@@ -105,15 +121,16 @@ definitions:
     type: object
     properties:
       id:
+        description: not required for create
         type: integer
       amount:
-        type: double
+        type: number
       tags:
         type: array
         items: 
           type: string
       date:
-        type: date
+        type: string
       info:
         type: string
       category:
