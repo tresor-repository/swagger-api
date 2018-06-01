@@ -156,7 +156,36 @@ paths:
                       type: string
                     count:
                       type: integer
-          
+  /spendings/stats/days:
+    get:
+      tags:
+        - stats
+      summary: get stats for spendings per day
+      operationId: statsByDays
+      parameters:
+        - name: dateStart
+          description: date start of stat
+          in: query
+          type: string
+        - name: dateEnd
+          description: date end of stat
+          in: query
+          type: string
+      responses:
+        200:
+          description: Success get stats per day
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                date: 
+                  type: string
+                amount:
+                  type: number
+  
+
+         
 
 definitions:
   Credential:
