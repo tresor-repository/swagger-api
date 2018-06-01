@@ -159,7 +159,7 @@ paths:
   /spendings/stats/days:
     get:
       tags:
-        - stats
+        - spendings
       summary: get stats for spendings per day
       operationId: statsByDays
       parameters:
@@ -183,7 +183,35 @@ paths:
                   type: string
                 amount:
                   type: number
-  
+  /tags/stats/count:
+    get:
+      tags:
+        - tags
+      summary: get stats for tags with number of count
+      operationId: statsByCount
+      parameters:
+        - name: dateStart
+          description: date start of stat
+          in: query
+          type: string
+        - name: dateEnd
+          description: date end of stat
+          in: query
+          type: string
+      responses:
+        200:
+          description: Success get stats tags by count
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                tag:
+                  type: string
+                count:
+                  type: integer
+        
+
 
          
 
