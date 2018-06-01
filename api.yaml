@@ -121,6 +121,42 @@ paths:
           description: Sucessfully update Spending
           schema:
             $ref: "#/definitions/Spending"
+  /tags:
+    get:
+      tags:
+        - tags
+      summary: search tags
+      operationId: searchTag
+      parameters:
+        - name: q
+          description: string to be query
+          in: query
+          type: string
+        - name: sort
+          description: short query result (name[default], count)
+          in: query
+          type: string
+          enum:
+            - "count"
+            - "name"
+      responses:
+        200:
+          description: Success get list of tags
+          schema:
+            type: object
+            properties:
+              count:
+                type: integer
+              data:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    tag:
+                      type: string
+                    count:
+                      type: integer
+          
 
 definitions:
   Credential:
