@@ -25,15 +25,6 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/Credential"
-        required: true
-        content:
-          application/json:
-            schema: 
-              $ref: '#/components/schemas/Credential'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Credential'
-
       responses:
         204:
           description: "user created"
@@ -41,7 +32,17 @@ paths:
     post:
       tags:
         - credential
-      summary: "Login user"
+      summary: Login user
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/definitions/Credential"
+      responses:
+        200:
+          schema:
+            $ref: "#/definitions/Token"
 definitions:
   Credential:
     type: object
@@ -49,4 +50,9 @@ definitions:
       email:
         type: string
       password:
+        type: string
+  Token:
+    type: object
+    properties:
+      token:
         type: string
