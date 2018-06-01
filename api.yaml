@@ -104,6 +104,24 @@ paths:
                 type: array
                 items:
                   $ref: "#/definitions/Spending"
+  /spendings/{spendingId}:
+    patch:
+      tags: 
+        - spendings
+      summary: Update Spending
+      operationId: updateSpending
+      parameters:
+        - in: body
+          name: spending
+          required: true
+          schema:
+            $ref: "#/definitions/Spending"
+      responses:
+        200:
+          description: Sucessfully update Spending
+          schema:
+            $ref: "#/definitions/Spending"
+
 definitions:
   Credential:
     type: object
