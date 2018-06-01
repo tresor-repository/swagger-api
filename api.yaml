@@ -14,7 +14,7 @@ produces:
 tags:
   - name: credential
 paths:
-  /user:
+  /users:
     post:
       tags: 
         - credential
@@ -28,7 +28,7 @@ paths:
       responses:
         204:
           description: "user created"
-  /session:
+  /sessions:
     post:
       tags:
         - credential
@@ -41,8 +41,16 @@ paths:
             $ref: "#/definitions/Credential"
       responses:
         200:
+          description: Successfully get token
           schema:
             $ref: "#/definitions/Token"
+        401:
+          description: email/password wrong
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
 definitions:
   Credential:
     type: object
