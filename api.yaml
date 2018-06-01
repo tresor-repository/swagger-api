@@ -51,6 +51,43 @@ paths:
             properties:
               message:
                 type: string
+  /spendings/:
+    get:
+      tags:
+        - spendings
+      summary: get list spendings  
+      operationId: getSpendingList
+      parameters:
+        - name: dateStart
+          description: start date filter
+          in: query
+          type: string
+        - name: dateEnd
+          description: end date filter
+          in: query
+          type: string
+        - name: page
+          description: page filter
+          in: query
+          type: integer
+        - name: tags
+          description: tags filter
+          in: query
+          type: array
+          items:
+            type: string
+      responses:
+        200:
+          description: Sucessfully get spendings
+          schema:
+            type: object
+            properties:
+              count: 
+                type: int
+              data:
+                type: array
+                items:
+                  $ref: "#/definitions/Spending"
 definitions:
   Credential:
     type: object
@@ -64,3 +101,21 @@ definitions:
     properties:
       token:
         type: string
+  Spending:
+    type: object
+    properties:
+      id:
+        type: integer
+      amount:
+        type: double
+      tags:
+        type: array
+        items: 
+          type: string
+      date:
+        type: date
+      info:
+        type: string
+      category:
+        type: string
+      
