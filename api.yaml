@@ -170,7 +170,33 @@ paths:
                       type: integer
                     amount:
                       type: integer
-  /spendings/stats/days:
+  /tags/{tag}/days:
+    get:
+      parameters:
+        - name: tag
+          in: path
+          type: string
+        - name: dateStart
+          in: query
+          type: string
+        - name: dateEnd
+          in: query
+          type: string
+      tags:
+        - tags
+      responses:
+        200:
+          description: success sending stats for selected tags per days
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                date:
+                  type: string
+                amount:
+                  type: integer
+  /spendings/days:
     get:
       tags:
         - spendings
