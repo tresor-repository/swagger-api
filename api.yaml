@@ -191,14 +191,7 @@ paths:
           schema:
             type: array
             items:
-              type: object
-              properties:
-                date: 
-                  type: string
-                amount:
-                  type: number
-                count:
-                  type: integer
+              $ref: "#/definitions/Tags"
 definitions:
   Credential:
     type: object
@@ -230,4 +223,12 @@ definitions:
         type: string
       category:
         type: string
-      
+  Tags:
+    type: object
+    properties:
+      date: 
+        type: string
+      amount:
+        type: number
+      count:
+        type: integer
